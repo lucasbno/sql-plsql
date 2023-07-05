@@ -627,6 +627,3 @@ VALUES
 (15, 2, 'Airplane',15.99, 1);
 
 COMMIT;
-
-
-
