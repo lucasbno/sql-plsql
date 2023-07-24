@@ -162,7 +162,9 @@ WHERE nome LIKE '__a%';
 
 SELECT nome
 FROM tb_empregado
-WHERE nome like '%l%l%';
+WHERE nome like '%l%l%'
+AND id_departamento = 30
+OR id_gerente = 108;
 
 --------------------------------------------------------------------------------
 
@@ -198,8 +200,9 @@ FROM tb_empregado;
 --Ordene as tuplas resultantes pelo número de meses desde a data de admissão.
 --Arredonde o número de meses para o inteiro mais próximo.
 
-SELECT nome, ROUND(MONTHS_BETWEEN((SELECT sysdate FROM dual), TO_DATE(data_admissao, 'DD-MON-RR'))) AS meses
-from tb_empregado;
+SELECT nome, ROUND(MONTHS_BETWEEN((SELECT sysdate FROM dual), TO_DATE(data_admissao, 'DD-MON-RR'))) AS "Meses Trabalhado"
+FROM tb_empregado
+ORDER BY 2 DESC;
 
 --------------------------------------------------------------------------------
 
@@ -287,11 +290,10 @@ ON (a.id_departamento = b.id_departamento);
 
 --------------------------------------------------------------------------------
 
---
 --29) Elabore uma lista única de todas as funções existentes no departamento 30. Insira a localização (cidade) do
 --departamento 30 na saída.
 
-SELECT b.ds_funcao, d.cidade
+SELECT b.ds_funcao || ' - ' || d.cidade AS "Função e cidade"
 FROM tb_empregado a
 JOIN tb_funcao b ON a.id_funcao = b.id_funcao
 JOIN tb_departamento c ON a.id_departamento = c.id_departamento

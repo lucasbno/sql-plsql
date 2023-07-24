@@ -5,7 +5,7 @@ BEGIN
   LOOP
     dbms_output.put_line(v_x);
     v_x := v_x + 10;
-    EXIT WHEN v_x > 50;  
+    EXIT WHEN v_x > 50;
   END LOOP;
   
   dbms_output.put_line('Depois do EXIT v_x eh: ' || v_x);  
