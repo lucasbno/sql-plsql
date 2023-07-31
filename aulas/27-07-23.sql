@@ -50,7 +50,6 @@ CREATE OR REPLACE PACKAGE BODY pkg_empregados IS
   END sp_empregado_s;
 END;  
 
-
 SET serveroutput ON
 DECLARE
   v_cursor  SYS_REFCURSOR;
