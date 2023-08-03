@@ -153,7 +153,7 @@ END;
 --06:00 AM e posterior as 10:00 PM.
 
 CREATE OR REPLACE TRIGGER checa_insert_fora_hora
-AFTER INSERT ON tb_empregado
+BEFORE INSERT OR UPDATE OR DELETE ON tb_empregado
 FOR EACH ROW
 DECLARE
   v_hora_atual number;
@@ -177,3 +177,7 @@ BEGIN
     RAISE_APPLICATION_ERROR(-20000, 'Erro. Não é possivel diminuir o salario de um empregado');
   END IF;
 END checa_reducao_salario;
+
+  SELECT listagg(nome, ', ')
+  FROM tb_empregado
+  WHERE id_gerente = 100;
