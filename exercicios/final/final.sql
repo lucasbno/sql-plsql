@@ -177,7 +177,3 @@ BEGIN
     RAISE_APPLICATION_ERROR(-20000, 'Erro. Não é possivel diminuir o salario de um empregado');
   END IF;
 END checa_reducao_salario;
-
-  SELECT listagg(nome, ', ')
-  FROM tb_empregado
-  WHERE id_gerente = 100;
